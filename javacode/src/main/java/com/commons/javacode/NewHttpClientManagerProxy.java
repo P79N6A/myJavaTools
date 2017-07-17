@@ -1,18 +1,14 @@
-package com.sohu.spaces.videos.encoder.base.util;
+package com.commons.javacode;
 
 import java.util.Map;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
-import org.json.JSONObject;
 
 /**
  * <p>
  * Description: add fail-over and retry feature for http.
  * </p>
- * @author guangchaowu
- * @version 1.0
- * @Date 2015年12月2日
  */
 public class NewHttpClientManagerProxy {
     private static Logger logger = Logger.getLogger(NewHttpClientManagerProxy.class);
