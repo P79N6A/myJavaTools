@@ -1,0 +1,25 @@
+<ehcache>
+  <diskStore path="java.io.tmpdir"/>
+
+  <defaultCache
+    maxElementsInMemory="5000"
+    eternal="true"
+    timeToLiveSeconds="300"
+    overflowToDisk="false" />
+    
+   <cache
+    name="videoFileCache"
+    maxElementsInMemory="20000"
+    eternal="false"
+    timeToLiveSeconds="3600"
+    overflowToDisk="false"
+    diskPersistent="false" />     
+    
+   <cache
+    name="videoVersionCache"
+    maxElementsInMemory="10000"
+    eternal="false"
+    timeToLiveSeconds="3600"
+    overflowToDisk="false"
+    diskPersistent="false" />                    
+</ehcache>
