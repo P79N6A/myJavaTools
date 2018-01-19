@@ -1,7 +1,7 @@
 /*
- * Copyright (c) 2013 Sohu. All Rights Reserved
+ * Copyright (c) 2013 uhos. All Rights Reserved
  */
-package com.sohu.ccm.heart.service;
+package spring.hibernate5.service;
 
 import java.util.List;
 
@@ -11,16 +11,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.sohu.ccm.heart.model.Server;
+import com.uhos.ccm.heart.model.Server;
 
 
 /**
  * <p>
  * Description:
  * </p>
- * @author guangchaowu
- * @version 1.0
- * @Date 2016年4月20日
  */
 @Service
 @Transactional

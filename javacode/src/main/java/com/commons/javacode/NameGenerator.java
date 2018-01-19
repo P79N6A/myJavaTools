@@ -1,12 +1,10 @@
-package com.sohu.spaces.videos.photo.storage;
+package com.commons.javacode;
 
 import java.net.InetAddress;
 
 /**
  * Key Generator, 产生图片唯一id,作为文件名
  *
- * @author FWX
- * @version $Id: NameGenerator.java,v 1.4 2008/06/27 09:12:46 xiegang Exp $
  */
 public class NameGenerator {
     private static final long IP;

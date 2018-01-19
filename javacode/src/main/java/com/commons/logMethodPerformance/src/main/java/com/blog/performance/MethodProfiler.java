@@ -1,4 +1,4 @@
-package com.sohu.blog.performance;
+package com.commons.logMethodPerformance.src.main.java.com.blog.performance;
 
 import java.util.Iterator;
 import java.util.Map;
@@ -12,7 +12,6 @@ import org.aspectj.lang.ProceedingJoinPoint;
 import org.springframework.beans.factory.InitializingBean;
 
 /**
- * @author 金海民
  */
 public class MethodProfiler implements InitializingBean {
     private Log log = LogFactory.getLog(MethodProfiler.class);

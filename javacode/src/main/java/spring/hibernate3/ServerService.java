@@ -1,7 +1,7 @@
 /*
- * Copyright (c) 2013 Sohu. All Rights Reserved
+ * Copyright (c) 2013 uhos. All Rights Reserved
  */
-package com.sohu.ccm.heart.service;
+package spring.hibernate3;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -15,8 +15,8 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate3.HibernateCallback;
 
-import com.sohu.ccm.heart.dao.ParentDao;
-import com.sohu.ccm.heart.model.Server;
+import com.uhos.ccm.heart.dao.ParentDao;
+import com.uhos.ccm.heart.model.Server;
 
 
 /**

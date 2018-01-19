@@ -1,7 +1,7 @@
 /*
- * Copyright (c) 2012 Sohu. All Rights Reserved
+ * Copyright (c) 2012 uhos. All Rights Reserved
  */
-package com.sohu.ccm.heart.dao;
+package spring.hibernate3.tmp;
 
 import java.io.Serializable;
 import java.util.Collection;

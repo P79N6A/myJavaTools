@@ -4,7 +4,7 @@
 	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.sohu.spaces</groupId>
+	<groupId>com.uhos.spaces</groupId>
 	<artifactId>spaces-ccm-command-service</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
 	<url>http://maven.apache.org</url>
@@ -25,17 +25,17 @@
 		<repository>
 			<id>Nexus</id>
 			<name>Nexus Public Repository</name>
-			<url>http://dev.hd.sohu.com.cn/nexus/content/groups/public</url>
+			<url>http://dev.hd.uhos.com.cn/nexus/content/groups/public</url>
 		</repository>
 		<repository>
 			<id>Nexus-local</id>
 			<name>Nexus local Repository</name>
-			<url>http://dev.hd.sohu.com.cn/nexus/service/local/repositories/central/content</url>
+			<url>http://dev.hd.uhos.com.cn/nexus/service/local/repositories/central/content</url>
 		</repository>
 		<repository>
 			<id>Nexus-3rd</id>
 			<name>Nexus local Repository</name>
-			<url>http://dev.hd.sohu.com.cn/nexus/service/local/repositories/3rdparty/content</url>
+			<url>http://dev.hd.uhos.com.cn/nexus/service/local/repositories/3rdparty/content</url>
 		</repository>
 		<repository>
 			<id>SNS-Nexus</id>

@@ -1,7 +1,7 @@
 /*
- * Copyright (c) 2013 Sohu. All Rights Reserved
+ * Copyright (c) 2013 uhos. All Rights Reserved
  */
-package com.sohu.ccm.heart;
+package spring.hibernate5;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -11,7 +11,7 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.ImportResource;
 
-import com.sohu.ccm.heart.utils.CommandCustomer;
+import com.uhos.ccm.heart.utils.CommandCustomer;
 
 /**
  * <p>

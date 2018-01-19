@@ -1,7 +1,7 @@
 /**
  *
  */
-package com.sohu.spaces.videos.encoder.base.util;
+package com.commons.http;
 import java.util.List;
 
 import org.apache.commons.lang.StringUtils;
@@ -14,9 +14,6 @@ import org.json.JSONObject;
  * <p>
  * Description: add fail-over and retry feature for http.
  * </p>
- * @author guangchaowu
- * @version 1.0
- * @Date 2015年12月2日
  */
 public class NewHttpClientUtil2Proxy {
     private static Logger logger = Logger.getLogger(NewHttpClientUtil2Proxy.class);

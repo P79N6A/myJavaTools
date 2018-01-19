@@ -82,7 +82,7 @@
 		<property name="dataSource" ref="dataSource" />
 		<property name="packagesToScan"><!-- 这里指定hibernate要扫描的包用以找出所有的模型 -->
 			<list>
-				<value>com.sohu.ccm.heart.model</value>
+				<value>com.uhos.ccm.heart.model</value>
 			</list>
 		</property>
 		<property name="hibernateProperties">  
@@ -106,7 +106,7 @@
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 	
-<!-- 	<bean id="dao" class="com.sohu.ccm.heart.dao.BaseDao">
+<!-- 	<bean id="dao" class="com.uhos.ccm.heart.dao.BaseDao">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean> -->
 	
@@ -118,12 +118,12 @@
           class="org.springframework.orm.hibernate5.HibernateTemplate"
           p:sessionFactory-ref="sessionFactory"/>
           
-<!--      <bean id="parentDao" class="com.sohu.ccm.heart.dao.ParentDao" abstract="true">
+<!--      <bean id="parentDao" class="com.uhos.ccm.heart.dao.ParentDao" abstract="true">
     	<property name="sessionFactory" ref="sessionFactory" />
     </bean> -->
     
-<!--     <bean id="serverService" class="com.sohu.ccm.heart.service.ServerService" parent="parentDao"></bean>
-    <bean id="commandJobService" class="com.sohu.ccm.heart.service.CommandJobService" parent="parentDao"></bean> -->
+<!--     <bean id="serverService" class="com.uhos.ccm.heart.service.ServerService" parent="parentDao"></bean>
+    <bean id="commandJobService" class="com.uhos.ccm.heart.service.CommandJobService" parent="parentDao"></bean> -->
     
 
     <!-- transaction manager, use JtaTransactionManager for global tx -->
@@ -131,12 +131,12 @@
         <property name="dataSource" ref="dataSource" />
     </bean>  -->
     
-<!--     <bean id="beatServer" class="com.sohu.ccm.heart.BeatServer">
+<!--     <bean id="beatServer" class="com.uhos.ccm.heart.BeatServer">
     	<property name="serverService" ref="serverService"></property>
     </bean> -->
 
 	<!-- Scans for @Repository, @Service and @Component -->
-	<!-- <context:component-scan base-package="com.sohu" /> -->
+	<!-- <context:component-scan base-package="com.uhos" /> -->
 	
 	<!-- enable autowire -->
     <!-- <context:annotation-config /> -->
@@ -159,7 +159,7 @@
 	</tx:advice>
 	
 	<aop:config>
-	    <aop:pointcut expression="execution(* com.sohu.ccm.heart.service.*.*(..))" id="txPointCut"/>
+	    <aop:pointcut expression="execution(* com.uhos.ccm.heart.service.*.*(..))" id="txPointCut"/>
 	    <aop:advisor advice-ref="txAdvice" pointcut-ref="txPointCut"/>
 	</aop:config>
   	<aop:aspectj-autoproxy proxy-target-class="false"/> -->

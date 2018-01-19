@@ -1,7 +1,7 @@
 /**
  *
  */
-package com.sohu.spaces.videos.encoder.base.util;
+package com.commons.http;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -30,9 +30,6 @@ import com.google.gson.Gson;
 
 import net.sf.json.JSONObject;
 
-/**
- * @author zhihuiqiu
- */
 public class NewHttpClientUtil2 {
     private static Logger log = Logger.getLogger(NewHttpClientUtil2.class);
     private static final String PRIVATE_KEY = "s54!sjfl*3ldf";

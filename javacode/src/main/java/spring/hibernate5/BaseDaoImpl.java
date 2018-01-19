@@ -1,7 +1,7 @@
 /*
- * Copyright (c) 2013 Sohu. All Rights Reserved
+ * Copyright (c) 2013 uhos. All Rights Reserved
  */
-package com.sohu.ccm.heart.dao;
+package spring.hibernate5;
 
 import java.io.Serializable;
 import java.math.BigInteger;

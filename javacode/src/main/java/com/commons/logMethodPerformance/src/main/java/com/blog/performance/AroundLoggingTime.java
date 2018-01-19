@@ -1,4 +1,4 @@
-package com.sohu.blog.performance;
+package com.commons.logMethodPerformance.src.main.java.com.blog.performance;
 
 import java.util.Collection;
 
@@ -6,7 +6,6 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.aspectj.lang.ProceedingJoinPoint;
 /**
- * @author 金海民
  */
 public class AroundLoggingTime {
 

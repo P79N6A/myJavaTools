@@ -1,9 +1,8 @@
-package com.sohu.blog.performance;
+package com.commons.logMethodPerformance.src.main.java.com.blog.performance;
 
 import java.io.Serializable;
 
 /**
- * @author 金海民
  */
 public class Method implements Serializable {
     private static final long serialVersionUID = 5891644182247161881L;

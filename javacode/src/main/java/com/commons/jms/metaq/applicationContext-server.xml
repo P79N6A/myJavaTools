@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--$Id: applicationContext-server.xml 153125 2010-07-13 09:03:18Z caiyingjie 
+	$ -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:sca="http://docs.oasis-open.org/ns/opencsa/sca-j/spring/200810"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
+            http://www.springframework.org/schema/sca http://www.osoa.org/xmlns/sca/1.0/spring-sca.xsd">
+
+	<!--  message session factory -->  
+    <bean id="sessionFactory" class="com.taobao.metamorphosis.client.extension.spring.MetaqMessageSessionFactoryBean">  
+        <property name="zkConnect" value="zookeeper1.register.tv.ugc.local:2181,zookeeper2.register.tv.ugc.local:2181,zookeeper3.register.tv.ugc.local:2181,zookeeper4.register.tv.ugc.local:2181,zookeeper5.register.tv.ugc.local:2181"/>  
+        <property name="zkSessionTimeoutMs" value="3000"/>  
+        <property name="zkConnectionTimeoutMs" value="3000"/>  
+        <property name="zkSyncTimeMs" value="5000"/>  
+    </bean>    
+    
+    
+    <bean id = "dateTopic" class="com.taobao.metamorphosis.client.extension.spring.MetaqTopic">  
+        <!-- consumer group -->  
+        <property name="group" value="ugcGroup"/>  
+        <!--  topic -->  
+        <property name="topic" value="vrs-topic"/>  
+        <!--  max buffer size to fetch messages -->  
+        <property name="maxBufferSize" value="16384"/>  
+    </bean>  
+    
+     <!--  message listener -->  
+    <bean id= "messageListener" class="com.uhos.spaces.videos.metaq.VrsMessageListener">  
+        <!--  threads to process these messages. -->        
+        <property name="processThreads" value="10"/>  
+        <property name="vrsApplicationService" ref="vrsApplicationService"/>  
+        <property name="screencapInfoService" ref="screencapInfoService"/>  
+        <property name="videoInfoService" ref="videoInfoService"/>  
+    </bean>  
+    
+    <bean id ="listenerContainer" class="com.taobao.metamorphosis.client.extension.spring.MessageListenerContainer">   
+       <property name="messageSessionFactory" ref="sessionFactory"/>  
+       <property name="subscribers">  
+           <map>  
+               <entry key-ref="dateTopic" value-ref="messageListener"/>  
+           </map>  
+       </property>  
+  </bean>  
+		
+
+</beans>

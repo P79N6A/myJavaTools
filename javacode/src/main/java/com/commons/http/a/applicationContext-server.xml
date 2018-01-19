@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--$Id: applicationContext-server.xml 153125 2010-07-13 09:03:18Z caiyingjie 
+	$ -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:sca="http://docs.oasis-open.org/ns/opencsa/sca-j/spring/200810"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
+            http://www.springframework.org/schema/sca http://www.osoa.org/xmlns/sca/1.0/spring-sca.xsd">
+
+	<!-- httpclient线程池 -->
+	<bean id="connectionManagerParams"
+		class="org.apache.commons.httpclient.params.HttpConnectionManagerParams">
+		<property name="connectionTimeout" value="10000" />
+		<property name="soTimeout" value="10000" />
+		<property name="maxTotalConnections" value="30" />
+		<property name="defaultMaxConnectionsPerHost" value="20" />
+	</bean>
+
+	<bean id="connectionManager"
+		class="org.apache.commons.httpclient.MultiThreadedHttpConnectionManager">
+		<property name="params" ref="connectionManagerParams" />
+	</bean>
+
+	<bean id="httpclient" class="org.apache.commons.httpclient.HttpClient">
+		<constructor-arg>
+			<ref bean="connectionManager" />
+		</constructor-arg>
+	</bean>
+
+	<bean id="httpClientUtil" class="com.uhos.spaces.vrs2video.util.HttpClientUtil">
+		<property name="httpclient" ref="httpclient" />
+	</bean>
+
+</beans>
