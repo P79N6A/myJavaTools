@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--$Id: applicationContext-server.xml 153125 2010-07-13 09:03:18Z caiyingjie $-->
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:sca="http://docs.oasis-open.org/ns/opencsa/sca-j/spring/200810"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
+            http://www.springframework.org/schema/sca http://www.osoa.org/xmlns/sca/1.0/spring-sca.xsd">
+            
+	<bean id="aroundLoggingTime" class="com.sohu.blog.performance.AroundLoggingTime" />
+    <aop:aspectj-autoproxy />
+    <aop:config>
+        <aop:aspect ref="aroundLoggingTime">
+            <aop:pointcut id="publicMethod" expression="execution(* com.sohu.spaces.*.service.*.*(..))" />
+            <aop:around pointcut-ref="publicMethod" method="doAroundLoggingTime" />
+        </aop:aspect>
+    </aop:config> 
+    
+</beans>                
+            
