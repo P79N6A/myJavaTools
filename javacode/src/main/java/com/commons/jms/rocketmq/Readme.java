@@ -2,7 +2,7 @@ package com.commons.jms.rocketmq;
 
 public class Readme {
     /*
-    可以看SH公司的mq-client-1.9.8.jar包，是对rocketmq的封装
+    可以看SH公司的mq-client-1.9.8.jar包，是对rocketmq的封装，依赖rocketmq4.2.0版本
 
     使用方法：
             Producer producer = new Producer("xxx-producer", "xxx-topic");
