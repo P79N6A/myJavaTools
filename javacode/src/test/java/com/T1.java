@@ -6,5 +6,6 @@ public class T1 {
         System.out.println("aaaabbbcccdddeee");
         System.out.println("dd");
         System.out.println("111");
+        System.out.println("www");
     }
 }
