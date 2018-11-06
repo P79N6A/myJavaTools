@@ -9,4 +9,8 @@ public class T1 {
         System.out.println("wwweeffggabdddffq2344567");
         System.out.println("aa");
     }
+
+    public static void aa(){
+
+    }
 }
