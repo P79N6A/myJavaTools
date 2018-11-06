@@ -11,6 +11,6 @@ public class T1 {
     }
 
     public static void aa(){
-
+        System.out.println("");
     }
 }
