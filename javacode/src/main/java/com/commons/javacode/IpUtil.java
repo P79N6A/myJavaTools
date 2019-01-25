@@ -6,6 +6,13 @@ import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
+import java.io.IOException;
+import java.net.Inet4Address;
+import java.net.InetAddress;
+import java.net.NetworkInterface;
+import java.net.UnknownHostException;
+import java.util.Enumeration;
+
 public class IpUtil {
 
     private static Log log = LogFactory.getLog(IpUtil.class);
@@ -47,6 +54,60 @@ public class IpUtil {
             return ip;
         }
         return request.getRemoteAddr();
+    }
+
+    public static String getIntranetIP() {
+        InetAddress address = findFirstNonLoopbackAddress();
+        return address.getHostAddress();
+    }
+
+    public static InetAddress findFirstNonLoopbackAddress() {
+        InetAddress result = null;
+        try {
+            int lowest = Integer.MAX_VALUE;
+            for (Enumeration<NetworkInterface> nics = NetworkInterface
+                    .getNetworkInterfaces(); nics.hasMoreElements();) {
+                NetworkInterface ifc = nics.nextElement();
+                if (ifc.isUp()) {
+                    log.trace("Testing interface: " + ifc.getDisplayName());
+                    if (ifc.getIndex() < lowest || result == null) {
+                        lowest = ifc.getIndex();
+                    }
+                    else if (result != null) {
+                        continue;
+                    }
+
+                    // @formatter:off
+                    for (Enumeration<InetAddress> addrs = ifc
+                            .getInetAddresses(); addrs.hasMoreElements();) {
+                        InetAddress address = addrs.nextElement();
+                        if (address instanceof Inet4Address
+                                && !address.isLoopbackAddress()) {
+                            log.trace("Found non-loopback interface: "
+                                    + ifc.getDisplayName());
+                            result = address;
+                        }
+                    }
+                    // @formatter:on
+                }
+            }
+        }
+        catch (IOException ex) {
+            log.error("Cannot get first non-loopback address", ex);
+        }
+
+        if (result != null) {
+            return result;
+        }
+
+        try {
+            return InetAddress.getLocalHost();
+        }
+        catch (UnknownHostException e) {
+            log.warn("Unable to retrieve localhost");
+        }
+
+        return null;
     }
 
 }
