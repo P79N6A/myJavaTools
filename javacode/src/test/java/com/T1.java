@@ -7,7 +7,7 @@ public class T1 {
         System.out.println("ddeeeff");
         System.out.println("111");
         System.out.println("wwweeffggabdddffq2344567");
-        System.out.println("aabbccddeefffff");
+        System.out.println("aabbccdd");
     }
 
     public static void aa(){
