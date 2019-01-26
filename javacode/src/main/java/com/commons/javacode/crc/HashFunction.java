@@ -1,4 +1,4 @@
-package com.commons.crc;
+package com.commons.javacode.crc;
 
 import java.io.Serializable;
 import java.util.List;

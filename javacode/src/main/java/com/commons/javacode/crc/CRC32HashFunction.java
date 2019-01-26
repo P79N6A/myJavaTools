@@ -1,4 +1,4 @@
-package com.commons.crc;
+package com.commons.javacode.crc;
 
 import java.util.ArrayList;
 import java.util.List;
