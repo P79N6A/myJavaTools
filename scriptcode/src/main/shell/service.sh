@@ -9,7 +9,7 @@ function stopService(){
     done
 }
 
-
+stopService 'aaa.war'
 
 
 
