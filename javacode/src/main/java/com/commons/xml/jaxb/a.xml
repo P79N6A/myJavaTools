@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ns2:changeVideoMeta xmlns:ns2="http://service.videos.spaces.sohu.com/">
+    <arg0>2</arg0>
+    <arg1>
+        <enType>0</enType>
+        <id>111</id>
+        <upServer>aaaa</upServer>
+    </arg1>
+    <arg2>
+        <enType>0</enType>
+        <id>222</id>
+        <upServer>bbbb</upServer>
+    </arg2>
+</ns2:changeVideoMeta>

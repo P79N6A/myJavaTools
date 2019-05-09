@@ -45,7 +45,7 @@ public class XmlUtils {
         //--xml to object------------------
 
         Unmarshaller unmarshaller = context.createUnmarshaller();
-        ChangeVideoMetaJmsVo changeVideoMetaJmsVo = (ChangeVideoMetaJmsVo)unmarshaller.unmarshal(new File("/Users/flsx/IdeaProjects/videobase/spaces-vrs2video-service/src/main/resources/a.xml"));
+        ChangeVideoMetaJmsVo changeVideoMetaJmsVo = (ChangeVideoMetaJmsVo)unmarshaller.unmarshal(new File("/.../a.xml"));
 
         System.out.println(changeVideoMetaJmsVo.getArg0());
         System.out.println(changeVideoMetaJmsVo.getArg1().getId());
