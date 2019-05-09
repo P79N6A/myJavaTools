@@ -28,7 +28,7 @@ public class XmlUtils {
             marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true); // 格式化XML输出，有分行和缩进
             marshaller.setProperty(Marshaller.JAXB_ENCODING, "UTF-8");  // 设置编码字符集
             String header = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>";
-            try {
+            try { //用于兼容两种版本的jaxb
                 marshaller.setProperty("com.sun.xml.bind.xmlHeaders", header);
             } catch (PropertyException e) {
                 marshaller.setProperty("com.sun.xml.internal.bind.xmlHeaders", header);
