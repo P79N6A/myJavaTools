@@ -6,7 +6,9 @@ import org.slf4j.LoggerFactory;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.concurrent.*;
+import java.util.concurrent.atomic.AtomicInteger;
 
 
 /**
@@ -28,6 +30,7 @@ public abstract class ConcurrentRequest<T,V> {
     private List<T> params = new ArrayList<T>();
 
     private Map<Integer, V> result;
+    private static AtomicInteger runningThreadNum = new AtomicInteger();
 
 //    /**
 //     * @param conNum 最大并发数
@@ -67,7 +70,7 @@ public abstract class ConcurrentRequest<T,V> {
      */
     public ConcurrentRequest(int conNum, List<T> params) throws IllegalArgumentException {
         this.conNum = conNum;
-        this.totalNum = params.size(); //入参个数应该与总请求数相等
+        this.totalNum = params.size();  //入参个数应该与总请求数相等
         semaphore = new Semaphore(conNum);
         countDownLatch = new CountDownLatch(totalNum);
         this.params = params;
@@ -102,16 +105,18 @@ public abstract class ConcurrentRequest<T,V> {
                 public void run() {
                     try{
                         semaphore.acquire();
+                        runningThreadNum.incrementAndGet();
 
                         V rs = process(param);
 
                         result.put(num, rs);
 
                     }catch (Throwable t){
-                        log.error("totalNum:" + totalNum + ",conNum:" + conNum + ",i:" + num, t);
+                        log.error("ConcurrentRequest totalNum:" + totalNum + ",conNum:" + conNum + ",i:" + num, t);
                     }finally {
                         semaphore.release();
                         countDownLatch.countDown();
+                        runningThreadNum.decrementAndGet();
                     }
 
                 }
@@ -121,11 +126,13 @@ public abstract class ConcurrentRequest<T,V> {
         try {
             countDownLatch.await();
             long cost = System.currentTimeMillis() - st;
-            log.info("totalNum:" + totalNum + ",conNum:" + conNum + ",cost:" + cost);
+            log.info("ConcurrentRequest totalNum:" + totalNum + ",conNum:" + conNum + ",cost:" + cost);
             this.result = result;
             return result;
         } catch (InterruptedException t) {
             log.error("totalNum:" + totalNum + ",conNum:" + conNum, t);
+        } finally {
+            pool.shutdown();
         }
         return null;
     }
@@ -140,6 +147,10 @@ public abstract class ConcurrentRequest<T,V> {
         if(result == null) return false;
 
         return result.size() == totalNum;
+    }
+
+    public static int getRunningThreadNum(){
+        return runningThreadNum.intValue();
     }
 
 

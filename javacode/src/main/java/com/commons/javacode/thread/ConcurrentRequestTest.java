@@ -2,6 +2,7 @@ package com.commons.javacode.thread;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -13,12 +14,25 @@ public class ConcurrentRequestTest {
         final AtomicInteger i = new AtomicInteger();
 
         List<String> params = new ArrayList<String>();
-        for(int j=0; j<10; j++){
+        for(int j=0; j<8; j++){
             params.add("a");
         }
 
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while (true){
+                    try {
+                        Thread.sleep(1000L);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    System.out.println(">>>"+ConcurrentRequest.getRunningThreadNum());
+                }
+            }
+        }).start();
 
-        ConcurrentRequest<String, Integer> cr = new ConcurrentRequest<String, Integer>(2, params) {
+        ConcurrentRequest<String, Integer> cr = new ConcurrentRequest<String, Integer>(3, params) {
             @Override
             public Integer process(String param) throws IOException {
                 int a = i.incrementAndGet();
@@ -36,6 +50,7 @@ public class ConcurrentRequestTest {
             }
         };
         Map<Integer, Integer> rs = cr.request();
+        rs = cr.request();
 
         System.out.println("======" + cr.isSuccess());
 
