@@ -142,4 +142,11 @@ public abstract class ConcurrentRequest<T,V> {
         return result.size() == totalNum;
     }
 
+
+    /**
+     * 当异步方法没有返回值时，可以返回该类型
+     */
+    class VoidResult{
+
+    }
 }
