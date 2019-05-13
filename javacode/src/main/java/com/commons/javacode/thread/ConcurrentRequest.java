@@ -67,7 +67,7 @@ public abstract class ConcurrentRequest<T,V> {
      */
     public ConcurrentRequest(int conNum, List<T> params) throws IllegalArgumentException {
         this.conNum = conNum;
-        this.totalNum = params.size();
+        this.totalNum = params.size(); //入参个数应该与总请求数相等
         semaphore = new Semaphore(conNum);
         countDownLatch = new CountDownLatch(totalNum);
         this.params = params;

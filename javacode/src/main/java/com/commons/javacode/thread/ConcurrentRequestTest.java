@@ -12,13 +12,13 @@ public class ConcurrentRequestTest {
 
         final AtomicInteger i = new AtomicInteger();
 
-        List<String> m = new ArrayList<String>();
+        List<String> params = new ArrayList<String>();
         for(int j=0; j<10; j++){
-            m.add("a");
+            params.add("a");
         }
 
 
-        ConcurrentRequest<String, Integer> cr = new ConcurrentRequest<String, Integer>(2, m) {
+        ConcurrentRequest<String, Integer> cr = new ConcurrentRequest<String, Integer>(2, params) {
             @Override
             public Integer process(String param) throws IOException {
                 int a = i.incrementAndGet();
