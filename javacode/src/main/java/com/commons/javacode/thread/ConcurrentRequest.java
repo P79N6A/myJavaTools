@@ -126,7 +126,7 @@ public abstract class ConcurrentRequest<T,V> {
         try {
             countDownLatch.await();
             long cost = System.currentTimeMillis() - st;
-            log.info("ConcurrentRequest totalNum:" + totalNum + ",conNum:" + conNum + ",cost:" + cost);
+            log.info("ConcurrentRequest totalNum:" + totalNum + ",conNum:" + conNum + ",cost:" + cost + ",runningThreadNum:" + getRunningThreadNum());
             this.result = result;
             return result;
         } catch (InterruptedException t) {
