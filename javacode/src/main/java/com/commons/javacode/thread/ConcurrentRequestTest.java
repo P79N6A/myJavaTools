@@ -13,11 +13,6 @@ public class ConcurrentRequestTest {
 
         final AtomicInteger i = new AtomicInteger();
 
-        List<String> params = new ArrayList<String>();
-        for(int j=0; j<8; j++){
-            params.add("a");
-        }
-
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -31,6 +26,11 @@ public class ConcurrentRequestTest {
                 }
             }
         }).start();
+
+        List<String> params = new ArrayList<String>();
+        for(int j=0; j<8; j++){
+            params.add("a");
+        }
 
         ConcurrentRequest<String, Integer> cr = new ConcurrentRequest<String, Integer>(3, params) {
             @Override
@@ -49,11 +49,11 @@ public class ConcurrentRequestTest {
                 return a;
             }
         };
+        cr.setLogFlag("my log");
         Map<Integer, Integer> rs = cr.request();
-        rs = cr.request();
+
 
         System.out.println("======" + cr.isSuccess());
-
 
         for(Map.Entry entry : rs.entrySet()){
             System.out.println(entry);

@@ -1,5 +1,7 @@
 package com.commons.javacode.thread;
 
+package com.sohu.spaces.util;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -31,25 +33,8 @@ public abstract class ConcurrentRequest<T,V> {
 
     private Map<Integer, V> result;
     private static AtomicInteger runningThreadNum = new AtomicInteger();
+    private String logFlag;
 
-//    /**
-//     * @param conNum 最大并发数
-//     * @param totalNum 总的请求数
-//     */
-//    public ConcurrentRequest(int conNum, int totalNum, List params) throws IllegalArgumentException {
-//        if(params != null){
-//            if(!(totalNum == params.size())){
-//                throw new IllegalArgumentException("totalNum need match params size");
-//            }
-//        }
-//
-//        this.conNum = conNum;
-//        this.totalNum = totalNum;
-//        semaphore = new Semaphore(conNum);
-//        countDownLatch = new CountDownLatch(totalNum);
-//        this.params = params;
-//
-//    }
 
     /**
      * 异步调用的方法无参
@@ -66,11 +51,45 @@ public abstract class ConcurrentRequest<T,V> {
     /**
      * 异步调用的方法有参
      * @param conNum 最大并发数
-     * @param totalNum 总的请求数
+     * @param params 所有请求参数
      */
     public ConcurrentRequest(int conNum, List<T> params) throws IllegalArgumentException {
         this.conNum = conNum;
         this.totalNum = params.size();  //入参个数应该与总请求数相等
+        semaphore = new Semaphore(conNum);
+        countDownLatch = new CountDownLatch(totalNum);
+        this.params = params;
+
+    }
+
+    /**
+     * 异步调用的方法无参
+     * @param conNum 最大并发数
+     * @param maxConNum 超过3页，并发量是maxConNum
+     * @param totalNum 总的请求数
+     */
+    public ConcurrentRequest(int conNum, int maxConNum, int totalNum) throws IllegalArgumentException {
+        this.conNum = conNum;
+        this.totalNum = totalNum;
+        if(totalNum/(float)conNum > 3){
+            this.conNum = maxConNum;
+        }
+        semaphore = new Semaphore(conNum);
+        countDownLatch = new CountDownLatch(totalNum);
+    }
+
+    /**
+     * 异步调用的方法有参
+     * @param conNum 最大并发数
+     * @param maxConNum 超过3页，并发量是maxConNum
+     * @param params 所有请求参数
+     */
+    public ConcurrentRequest(int conNum, int maxConNum, List<T> params) throws IllegalArgumentException {
+        this.conNum = conNum;
+        this.totalNum = params.size();  //入参个数应该与总请求数相等
+        if(this.totalNum/(float)conNum > 3){
+            this.conNum = maxConNum;
+        }
         semaphore = new Semaphore(conNum);
         countDownLatch = new CountDownLatch(totalNum);
         this.params = params;
@@ -112,7 +131,7 @@ public abstract class ConcurrentRequest<T,V> {
                         result.put(num, rs);
 
                     }catch (Throwable t){
-                        log.error("ConcurrentRequest totalNum:" + totalNum + ",conNum:" + conNum + ",i:" + num, t);
+                        log.error("ConcurrentRequest " + logFlag + ",totalNum:" + totalNum + ",conNum:" + conNum + ",i:" + num, t);
                     }finally {
                         semaphore.release();
                         countDownLatch.countDown();
@@ -125,12 +144,13 @@ public abstract class ConcurrentRequest<T,V> {
 
         try {
             countDownLatch.await();
-            long cost = System.currentTimeMillis() - st;
-            log.info("ConcurrentRequest totalNum:" + totalNum + ",conNum:" + conNum + ",cost:" + cost + ",runningThreadNum:" + getRunningThreadNum());
             this.result = result;
+            long cost = System.currentTimeMillis() - st;
+            log.info("ConcurrentRequest " + logFlag + ",totalNum:" + totalNum + ",conNum:" + conNum +
+                    ",successNum:" + result.size() + ",isAllSuccess:" + isSuccess() + ",cost:" + cost + ",runningThreadNum:" + getRunningThreadNum());
             return result;
         } catch (InterruptedException t) {
-            log.error("totalNum:" + totalNum + ",conNum:" + conNum, t);
+            log.error("ConcurrentRequest " + logFlag + ",totalNum:" + totalNum + ",conNum:" + conNum, t);
         } finally {
             pool.shutdown();
         }
@@ -153,6 +173,9 @@ public abstract class ConcurrentRequest<T,V> {
         return runningThreadNum.intValue();
     }
 
+    public void setLogFlag(String log){
+        this.logFlag = log;
+    }
 
     /**
      * 当异步方法没有返回值时，可以返回该类型
@@ -161,3 +184,4 @@ public abstract class ConcurrentRequest<T,V> {
 
     }
 }
+
