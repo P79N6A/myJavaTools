@@ -1,7 +1,5 @@
 package com.commons.javacode.thread;
 
-package com.sohu.spaces.util;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -31,7 +29,7 @@ public abstract class ConcurrentRequest<T,V> {
 
     private List<T> params = new ArrayList<T>();
 
-    private Map<Integer, V> result;
+    private Results results;
     private static AtomicInteger runningThreadNum = new AtomicInteger();
     private String logFlag;
 
@@ -104,10 +102,12 @@ public abstract class ConcurrentRequest<T,V> {
      * 异步方法必须有返回值
      * 部分任务失败，其它任务会继续执行
      */
-    public Map<Integer, V> request(){
+    public Results request(){
         long st = System.currentTimeMillis();
 
-        final Map<Integer, V> result = new ConcurrentHashMap<Integer, V>();
+        final Map<Integer, V> validResult = new ConcurrentHashMap<Integer, V>();
+        final Map<Integer, NullResult> nullResult = new ConcurrentHashMap<Integer, NullResult>();
+        final Map<Integer, ExceptionResult> exceptionResult = new ConcurrentHashMap<Integer, ExceptionResult>();
 
         for(int i=0; i<totalNum; i++){
 
@@ -127,10 +127,13 @@ public abstract class ConcurrentRequest<T,V> {
                         runningThreadNum.incrementAndGet();
 
                         V rs = process(param);
-
-                        result.put(num, rs);
-
+                        if(rs != null) {
+                            validResult.put(num, rs);
+                        }else{
+                            nullResult.put(num, new NullResult());
+                        }
                     }catch (Throwable t){
+                        exceptionResult.put(num, new ExceptionResult());
                         log.error("ConcurrentRequest " + logFlag + ",totalNum:" + totalNum + ",conNum:" + conNum + ",i:" + num, t);
                     }finally {
                         semaphore.release();
@@ -144,11 +147,11 @@ public abstract class ConcurrentRequest<T,V> {
 
         try {
             countDownLatch.await();
-            this.result = result;
+            this.results = new Results(validResult, nullResult, exceptionResult);
             long cost = System.currentTimeMillis() - st;
             log.info("ConcurrentRequest " + logFlag + ",totalNum:" + totalNum + ",conNum:" + conNum +
-                    ",successNum:" + result.size() + ",isAllSuccess:" + isSuccess() + ",cost:" + cost + ",runningThreadNum:" + getRunningThreadNum());
-            return result;
+                    ",successNum:" + this.results.getSuccessNum() + ",isAllSuccess:" + isSuccess() + ",cost:" + cost + ",runningThreadNum:" + getRunningThreadNum());
+            return results;
         } catch (InterruptedException t) {
             log.error("ConcurrentRequest " + logFlag + ",totalNum:" + totalNum + ",conNum:" + conNum, t);
         } finally {
@@ -164,9 +167,8 @@ public abstract class ConcurrentRequest<T,V> {
      * @return 只有全部任务成功，才是true
      */
     public boolean isSuccess(){
-        if(result == null) return false;
-
-        return result.size() == totalNum;
+        if(results == null) return false;
+        return results.getSuccessNum() == totalNum;
     }
 
     public static int getRunningThreadNum(){
@@ -182,6 +184,69 @@ public abstract class ConcurrentRequest<T,V> {
      */
     class VoidResult{
 
+    }
+
+    class NullResult{
+
+    }
+
+    class ExceptionResult{
+
+    }
+
+    class Results{
+        private Map<Integer, V> validResult = new ConcurrentHashMap<Integer, V>();
+        private Map<Integer, NullResult> nullResult = new ConcurrentHashMap<Integer, NullResult>();
+        private Map<Integer, ExceptionResult> exceptionResult = new ConcurrentHashMap<Integer, ExceptionResult>();
+
+        public Results() {
+        }
+
+        public Results(Map<Integer, V> validResult, Map<Integer, NullResult> nullResult, Map<Integer, ExceptionResult> exceptionResult) {
+            this.validResult = validResult;
+            this.nullResult = nullResult;
+            this.exceptionResult = exceptionResult;
+        }
+
+        public Map<Integer, V> getValidResult() {
+            return validResult;
+        }
+
+        public void setValidResult(Map<Integer, V> validResult) {
+            this.validResult = validResult;
+        }
+
+        public Map<Integer, NullResult> getNullResult() {
+            return nullResult;
+        }
+
+        public void setNullResult(Map<Integer, NullResult> nullResult) {
+            this.nullResult = nullResult;
+        }
+
+        public Map<Integer, ExceptionResult> getExceptionResult() {
+            return exceptionResult;
+        }
+
+        public void setExceptionResult(Map<Integer, ExceptionResult> exceptionResult) {
+            this.exceptionResult = exceptionResult;
+        }
+
+        public int getSuccessNum(){
+            int n = 0;
+            if(validResult != null){
+                n += validResult.size();
+            }
+            if(nullResult != null){
+                n += nullResult.size();
+            }
+            return n;
+        }
+
+        public int getFailNum(){
+            if(exceptionResult == null) return 0;
+            return exceptionResult.size();
+        }
     }
 }
 

@@ -50,7 +50,8 @@ public class ConcurrentRequestTest {
             }
         };
         cr.setLogFlag("my log");
-        Map<Integer, Integer> rs = cr.request();
+        ConcurrentRequest<String, Integer>.Results request = cr.request();
+        Map<Integer, Integer> rs = request.getValidResult();
 
 
         System.out.println("======" + cr.isSuccess());
