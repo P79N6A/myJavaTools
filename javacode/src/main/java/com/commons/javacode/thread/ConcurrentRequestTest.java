@@ -59,6 +59,11 @@ public class ConcurrentRequestTest {
         for(Map.Entry entry : rs.entrySet()){
             System.out.println(entry);
         }
+
+        List<Integer> list = request.getValidResultList();
+        for(Integer li:list){
+            System.out.println(li);
+        }
     }
 
 

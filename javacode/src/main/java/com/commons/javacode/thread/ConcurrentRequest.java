@@ -3,11 +3,9 @@ package com.commons.javacode.thread;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 import java.util.concurrent.*;
+import java.util.Collections;
 import java.util.concurrent.atomic.AtomicInteger;
 
 
@@ -194,7 +192,7 @@ public abstract class ConcurrentRequest<T,V> {
 
     }
 
-    class Results{
+    public class Results{
         private Map<Integer, V> validResult = new ConcurrentHashMap<Integer, V>();
         private Map<Integer, NullResult> nullResult = new ConcurrentHashMap<Integer, NullResult>();
         private Map<Integer, ExceptionResult> exceptionResult = new ConcurrentHashMap<Integer, ExceptionResult>();
@@ -232,6 +230,28 @@ public abstract class ConcurrentRequest<T,V> {
             this.exceptionResult = exceptionResult;
         }
 
+        public List<V> getValidResultList(){
+            if(this.validResult != null){
+                List<V> list = new ArrayList<V>();
+
+                List<Map.Entry<Integer, V>> entryList = new ArrayList<Map.Entry<Integer, V>>(this.validResult.entrySet());
+                Collections.sort(entryList,new Comparator<Map.Entry<Integer, V>>() {
+                    //升序排序
+                    public int compare(Map.Entry<Integer, V> o1,
+                                       Map.Entry<Integer, V> o2) {
+                        return o1.getKey().compareTo(o2.getKey());
+                    }
+
+                });
+                for(Map.Entry<Integer, V> entry:entryList){
+                    list.add(entry.getValue());
+                }
+
+                return list;
+            }
+            return null;
+        }
+
         public int getSuccessNum(){
             int n = 0;
             if(validResult != null){
@@ -249,4 +269,3 @@ public abstract class ConcurrentRequest<T,V> {
         }
     }
 }
-
