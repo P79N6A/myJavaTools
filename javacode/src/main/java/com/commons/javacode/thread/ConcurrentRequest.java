@@ -23,7 +23,9 @@ public abstract class ConcurrentRequest<T,V> {
     private CountDownLatch countDownLatch;
     private Semaphore semaphore;
 
-    private ExecutorService pool = Executors.newCachedThreadPool();
+    private ExecutorService pool = new ThreadPoolExecutor(0, Integer.MAX_VALUE,
+            60L, TimeUnit.SECONDS,
+            new SynchronousQueue<Runnable>(), new RequestThreadFactory(), new ThreadPoolExecutor.AbortPolicy());;
 
     private List<T> params = new ArrayList<T>();
 
@@ -207,7 +209,7 @@ public abstract class ConcurrentRequest<T,V> {
         }
 
         /**
-         * map中的key可能不是连续的，中间可能有返回为null或调用失败的导致不连续.
+         * map中的key可能不是连续的，中间可能有返回为null或调用失败的导致不连续
          */
         public Map<Integer, V> getValidResult() {
             return validResult;
@@ -269,6 +271,33 @@ public abstract class ConcurrentRequest<T,V> {
         public int getFailNum(){
             if(exceptionResult == null) return 0;
             return exceptionResult.size();
+        }
+    }
+
+    static class RequestThreadFactory implements ThreadFactory {
+        private static final AtomicInteger poolNumber = new AtomicInteger(1);
+        private final ThreadGroup group;
+        private final AtomicInteger threadNumber = new AtomicInteger(1);
+        private final String namePrefix;
+
+        RequestThreadFactory() {
+            SecurityManager s = System.getSecurityManager();
+            group = (s != null) ? s.getThreadGroup() :
+                    Thread.currentThread().getThreadGroup();
+            namePrefix = "ConcurrentRequestPool-" +
+                    poolNumber.getAndIncrement() +
+                    "-thread-";
+        }
+
+        public Thread newThread(Runnable r) {
+            Thread t = new Thread(group, r,
+                    namePrefix + threadNumber.getAndIncrement(),
+                    0);
+            if (t.isDaemon())
+                t.setDaemon(false);
+            if (t.getPriority() != Thread.NORM_PRIORITY)
+                t.setPriority(Thread.NORM_PRIORITY);
+            return t;
         }
     }
 }
