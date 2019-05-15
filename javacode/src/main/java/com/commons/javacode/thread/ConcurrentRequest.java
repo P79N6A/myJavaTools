@@ -207,7 +207,7 @@ public abstract class ConcurrentRequest<T,V> {
         }
 
         /**
-         * map中的key可能不是连续的，中间可能有返回为null或调用失败的导致不连续
+         * map中的key可能不是连续的，中间可能有返回为null或调用失败的导致不连续.
          */
         public Map<Integer, V> getValidResult() {
             return validResult;
