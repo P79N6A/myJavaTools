@@ -134,7 +134,7 @@ public abstract class ConcurrentRequest<T,V> {
                         }
                     }catch (Throwable t){
                         exceptionResult.put(num, new ExceptionResult());
-                        log.error("ConcurrentRequest " + logFlag + ",totalNum:" + totalNum + ",conNum:" + conNum + ",i:" + num, t);
+                        log.error(logFlag + ",totalNum:" + totalNum + ",conNum:" + conNum + ",i:" + num, t);
                     }finally {
                         semaphore.release();
                         countDownLatch.countDown();
@@ -149,11 +149,11 @@ public abstract class ConcurrentRequest<T,V> {
             countDownLatch.await();
             this.results = new Results(validResult, nullResult, exceptionResult);
             long cost = System.currentTimeMillis() - st;
-            log.info("ConcurrentRequest " + logFlag + ",totalNum:" + totalNum + ",conNum:" + conNum +
+            log.info(logFlag + ",totalNum:" + totalNum + ",conNum:" + conNum +
                     ",successNum:" + this.results.getSuccessNum() + ",isAllSuccess:" + isSuccess() + ",cost:" + cost + ",runningThreadNum:" + getRunningThreadNum());
             return results;
         } catch (InterruptedException t) {
-            log.error("ConcurrentRequest " + logFlag + ",totalNum:" + totalNum + ",conNum:" + conNum, t);
+            log.error(logFlag + ",totalNum:" + totalNum + ",conNum:" + conNum, t);
         } finally {
             pool.shutdown();
         }
