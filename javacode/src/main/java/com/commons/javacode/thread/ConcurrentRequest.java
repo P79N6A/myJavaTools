@@ -23,9 +23,11 @@ public abstract class ConcurrentRequest<T,V> {
     private CountDownLatch countDownLatch;
     private Semaphore semaphore;
 
-    private ExecutorService pool = new ThreadPoolExecutor(0, Integer.MAX_VALUE,
+    private static int poolSize = 100;
+
+    private static ThreadPoolExecutor pool = new ThreadPoolExecutor(poolSize, poolSize,
             60L, TimeUnit.SECONDS,
-            new SynchronousQueue<Runnable>(), new RequestThreadFactory(), new ThreadPoolExecutor.AbortPolicy());;
+            new LinkedBlockingQueue<Runnable>(), new ConcurrentRequest.RequestThreadFactory(), new ThreadPoolExecutor.AbortPolicy());
 
     private List<T> params = new ArrayList<T>();
 
@@ -150,12 +152,13 @@ public abstract class ConcurrentRequest<T,V> {
             this.results = new Results(validResult, nullResult, exceptionResult);
             long cost = System.currentTimeMillis() - st;
             log.info(logFlag + ",totalNum:" + totalNum + ",conNum:" + conNum +
-                    ",successNum:" + this.results.getSuccessNum() + ",isAllSuccess:" + isSuccess() + ",cost:" + cost + ",runningThreadNum:" + getRunningThreadNum());
+                    ",successNum:" + this.results.getSuccessNum() + ",isAllSuccess:" + isSuccess() + ",cost:" + cost
+                    + ",runningThreadNum:" + getRunningThreadNum() + ",queueNum:" + pool.getQueue().size());
             return results;
         } catch (InterruptedException t) {
             log.error(logFlag + ",totalNum:" + totalNum + ",conNum:" + conNum, t);
         } finally {
-            pool.shutdown();
+
         }
         return null;
     }
