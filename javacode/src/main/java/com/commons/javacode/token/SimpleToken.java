@@ -20,7 +20,7 @@ public class SimpleToken {
     }
 
     public static void main(String[] args){
-        boolean checkExpire = (System.currentTimeMillis()/1000 + 10*60)- t > 0;
+        boolean checkExpire = (System.currentTimeMillis()/1000 + 10*60) > t;
         String PRIVATE_KEY = "s54!sjfl*3ldf";
         String sig2 = DigestUtils.md5Hex(t + PRIVATE_KEY);
         if(!checkExpire ||!sig2.equals(sig)){
