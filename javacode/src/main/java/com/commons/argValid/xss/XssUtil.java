@@ -38,7 +38,7 @@ public class XssUtil {
 
     public static String excapeRequestParam(String param) {
         String p = filterParameter(param);
-        //p = StringEscapeUtils.escapeHtml(p); 对于json不友好
+        //p = StringEscapeUtils.escapeHtml(p); 会转义json中的双引号
         //p = StringEscapeUtils.escapeJavaScript(p);  //会将/变成\/,对图片地址不适用，上面已经对特殊符号进行了删除，这里可以不用它了
         p=StringEscapeUtils.escapeSql(p);
         return p;
