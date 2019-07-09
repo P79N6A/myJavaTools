@@ -19,13 +19,16 @@ public class XssUtil {
      * 使用正则替换，即使用replaceAll方法
      */
     public static String filterParameter(String parameter){
-        if(StringUtils.isEmpty(parameter))return null;
+        if(StringUtils.isEmpty(parameter)) return null;
+        parameter=parameter.replaceAll("<script", "");
+        parameter=parameter.replaceAll("script>", "");
+        parameter=parameter.replaceAll("<body", "");
+        parameter=parameter.replaceAll("body>", "");
+        parameter=parameter.replaceAll("alert\\(", "");
+        parameter=parameter.replaceAll("document\\.", "");
+
         for(String s : dangerCharactersForRegex){
             if(!StringUtils.isEmpty(s.trim())) {
-                parameter=parameter.replaceAll("<script", "");
-                parameter=parameter.replaceAll("script>", "");
-                parameter=parameter.replaceAll("<body", "");
-                parameter=parameter.replaceAll("body>", "");
 
                 parameter=parameter.replaceAll("(?i)" + s, "");
             }
