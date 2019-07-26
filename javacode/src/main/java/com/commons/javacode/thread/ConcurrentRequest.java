@@ -23,11 +23,11 @@ public abstract class ConcurrentRequest<T,V> {
     private CountDownLatch countDownLatch;
     private Semaphore semaphore;
 
-    private static int poolSize = 100;
+    private static int poolSize = 30;
 
     private static ThreadPoolExecutor pool = new ThreadPoolExecutor(poolSize, poolSize,
             60L, TimeUnit.SECONDS,
-            new LinkedBlockingQueue<Runnable>(), new ConcurrentRequest.RequestThreadFactory(), new ThreadPoolExecutor.AbortPolicy());
+            new LinkedBlockingQueue<Runnable>(50), new ConcurrentRequest.RequestThreadFactory(), new ThreadPoolExecutor.AbortPolicy());
 
     private List<T> params = new ArrayList<T>();
 
