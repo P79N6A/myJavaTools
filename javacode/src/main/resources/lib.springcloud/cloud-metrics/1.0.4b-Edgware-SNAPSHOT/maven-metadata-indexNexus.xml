@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata modelVersion="1.1.0">
+  <groupId>com.sohu.tv.index.cloud</groupId>
+  <artifactId>cloud-metrics</artifactId>
+  <version>1.0.4b-Edgware-SNAPSHOT</version>
+  <versioning>
+    <snapshot>
+      <timestamp>20180103.104648</timestamp>
+      <buildNumber>2</buildNumber>
+    </snapshot>
+    <lastUpdated>20180103104648</lastUpdated>
+    <snapshotVersions>
+      <snapshotVersion>
+        <extension>jar</extension>
+        <value>1.0.4b-Edgware-20180103.104648-2</value>
+        <updated>20180103104648</updated>
+      </snapshotVersion>
+      <snapshotVersion>
+        <extension>pom</extension>
+        <value>1.0.4b-Edgware-20180103.104648-2</value>
+        <updated>20180103104648</updated>
+      </snapshotVersion>
+    </snapshotVersions>
+  </versioning>
+</metadata>

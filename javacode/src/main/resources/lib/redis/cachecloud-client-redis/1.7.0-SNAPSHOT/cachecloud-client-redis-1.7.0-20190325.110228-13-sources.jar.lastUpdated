@@ -1,0 +1,11 @@
+#NOTE: This is an Aether internal implementation file, its format can be changed without prior notice.
+#Mon Aug 26 15:17:28 CST 2019
+@default-Nexus-http\://dev.hd.sohu.com.cn/nexus/content/groups/public/.lastUpdated=1566803848110
+@default-Nexus-snapshot-http\://dev.hd.sohu.com.cn/nexus/content/repositories/snapshots/.lastUpdated=1566803848331
+http\://dev.hd.sohu.com.cn/nexus/content/repositories/snapshots/.error=Could not transfer artifact com.sohu.tv\:cachecloud-client-redis\:jar\:sources\:1.7.0-20190325.110228-13 from/to Nexus-snapshot (http\://dev.hd.sohu.com.cn/nexus/content/repositories/snapshots)\: Can't connect to SOCKS proxy\:Connection refused (Connection refused)
+http\://dev.hd.sohu.com.cn/nexus/content/groups/public/.error=Could not transfer artifact com.sohu.tv\:cachecloud-client-redis\:jar\:sources\:1.7.0-20190325.110228-13 from/to Nexus (http\://dev.hd.sohu.com.cn/nexus/content/groups/public)\: Can't connect to SOCKS proxy\:Connection refused (Connection refused)
+http\://dev.hd.sohu.com.cn/nexus/content/repositories/releases/.error=Could not transfer artifact com.sohu.tv\:cachecloud-client-redis\:jar\:sources\:1.7.0-20190325.110228-13 from/to Nexus-releases (http\://dev.hd.sohu.com.cn/nexus/content/repositories/releases)\: Can't connect to SOCKS proxy\:Connection refused (Connection refused)
+@default-Nexus-releases-http\://dev.hd.sohu.com.cn/nexus/content/repositories/releases/.lastUpdated=1566803848191
+http\://dev.hd.sohu.com.cn/nexus/content/repositories/3rdparty/.error=Could not transfer artifact com.sohu.tv\:cachecloud-client-redis\:jar\:sources\:1.7.0-20190325.110228-13 from/to Nexus-3rd (http\://dev.hd.sohu.com.cn/nexus/content/repositories/3rdparty)\: Can't connect to SOCKS proxy\:Connection refused (Connection refused)
+@default-Nexus-3rd-http\://dev.hd.sohu.com.cn/nexus/content/repositories/3rdparty/.lastUpdated=1566803848323
+http\://index.tv.sohuno.com/nexus/content/groups/public/.lastUpdated=1558410434406

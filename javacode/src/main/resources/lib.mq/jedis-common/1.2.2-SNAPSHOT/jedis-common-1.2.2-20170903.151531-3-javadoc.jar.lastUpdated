@@ -1,0 +1,19 @@
+#NOTE: This is an Aether internal implementation file, its format can be changed without prior notice.
+#Thu Sep 05 18:24:39 CST 2019
+http\://dev.hd.sohu.com.cn/nexus/content/repositories/3rdparty/.lastUpdated=1567673375834
+http\://index.tv.sohuno.com/nexus/content/groups/public/.error=
+http\://dev.hd.sohu.com.cn/nexus/content/repositories/snapshots/.lastUpdated=1567673375825
+@default-sohuNexus-http\://dev.hd.sohu.com.cn/nexus/content/groups/public/.lastUpdated=1550065829813
+http\://dev.hd.sohu.com.cn/nexus/content/repositories/snapshots/.error=
+http\://dev.hd.sohu.com.cn/nexus/content/groups/public/.error=
+http\://dev.hd.sohu.com.cn/nexus/content/groups/public/.lastUpdated=1567673375810
+http\://dev.hd.sohu.com.cn/nexus/service/local/repositories/central/content/.lastUpdated=1567679079579
+http\://dev.hd.sohu.com.cn/nexus/content/repositories/releases/.error=
+@default-sohuNexus-snapshot-http\://dev.hd.sohu.com.cn/nexus/content/repositories/snapshots/.lastUpdated=1550065829818
+http\://dev.hd.sohu.com.cn/nexus/content/repositories/3rdparty/.error=
+@default-sohuNexus-releases-http\://dev.hd.sohu.com.cn/nexus/content/repositories/releases/.lastUpdated=1550065829816
+http\://dev.hd.sohu.com.cn/nexus/content/repositories/atlassian/.error=Could not transfer artifact com.sohu.tv\:jedis-common\:jar\:javadoc\:1.2.2-20170903.151531-3 from/to Nexus-repositories-atlassian (http\://dev.hd.sohu.com.cn/nexus/content/repositories/atlassian)\: dev.hd.sohu.com.cn
+http\://dev.hd.sohu.com.cn/nexus/content/repositories/releases/.lastUpdated=1567673375818
+@default-Nexus-repositories-atlassian-http\://dev.hd.sohu.com.cn/nexus/content/repositories/atlassian/.lastUpdated=1543504425871
+http\://dev.hd.sohu.com.cn/nexus/service/local/repositories/central/content/.error=
+http\://index.tv.sohuno.com/nexus/content/groups/public/.lastUpdated=1567673376383

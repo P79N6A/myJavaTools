@@ -1,0 +1,14 @@
+#NOTE: This is an Aether internal implementation file, its format can be changed without prior notice.
+#Fri Aug 30 20:22:54 CST 2019
+@default-central-https\://repo.maven.apache.org/maven2/.lastUpdated=1567077990974
+http\://dev.hd.sohu.com.cn/nexus/content/repositories/3rdparty/.lastUpdated=1567167773527
+http\://dev.hd.sohu.com.cn/nexus/content/repositories/snapshots/.lastUpdated=1567167773519
+http\://dev.hd.sohu.com.cn/nexus/content/repositories/snapshots/.error=
+http\://dev.hd.sohu.com.cn/nexus/content/groups/public/.error=
+http\://dev.hd.sohu.com.cn/nexus/content/groups/public/.lastUpdated=1567167773500
+http\://dev.hd.sohu.com.cn/nexus/content/repositories/releases/.error=
+http\://dev.hd.sohu.com.cn/nexus/content/repositories/3rdparty/.error=
+https\://repo.maven.apache.org/maven2/.error=Could not transfer artifact com.sohu.tv\:mq-client-open\:jar\:sources\:3.7 from/to central (https\://repo.maven.apache.org/maven2)\: Can't connect to SOCKS proxy\:Connection refused (Connection refused)
+http\://dev.hd.sohu.com.cn/nexus/content/repositories/releases/.lastUpdated=1567167773509
+@default-Nexus-3rd-http\://dev.hd.sohu.com.cn/nexus/content/repositories/3rdparty/.lastUpdated=1567077990932
+http\://index.tv.sohuno.com/nexus/content/groups/public/.lastUpdated=1567167774366

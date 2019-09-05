@@ -1,0 +1,15 @@
+#NOTE: This is an Aether internal implementation file, its format can be changed without prior notice.
+#Tue Mar 12 11:38:51 CST 2019
+http\://dev.hd.sohu.com.cn/nexus/content/repositories/3rdparty/.lastUpdated=1552361931436
+http\://index.tv.sohuno.com/nexus/content/groups/public/.error=
+http\://dev.hd.sohu.com.cn/nexus/content/repositories/snapshots/.lastUpdated=1552361931419
+http\://dev.hd.sohu.com.cn/nexus/content/repositories/snapshots/.error=
+http\://dev.hd.sohu.com.cn/nexus/content/groups/public/.error=
+http\://dev.hd.sohu.com.cn/nexus/content/groups/public/.lastUpdated=1552361931398
+http\://dev.hd.sohu.com.cn/nexus/content/repositories/releases/.error=
+http\://dev.hd.sohu.com.cn/nexus/content/repositories/3rdparty/.error=
+http\://dev.hd.sohu.com.cn/nexus/content/repositories/releases/.lastUpdated=1552361931407
+http\://dev.hd.sohu.com.cn/nexus/service/local/repositories/central/content/.error=Could not transfer artifact com.sohu.tv\:cachecloud-client-basic\:jar\:sources\:1.1-20170821.090502-7 from/to Nexus-local (http\://dev.hd.sohu.com.cn/nexus/service/local/repositories/central/content)\: Can't connect to SOCKS proxy\:Connection refused (Connection refused)
+@default-Nexus-3rd-http\://dev.hd.sohu.com.cn/nexus/content/repositories/3rdparty/.lastUpdated=1551668773870
+@default-Nexus-local-http\://dev.hd.sohu.com.cn/nexus/service/local/repositories/central/content/.lastUpdated=1550204453716
+http\://index.tv.sohuno.com/nexus/content/groups/public/.lastUpdated=1552361931998

@@ -1,0 +1,16 @@
+#NOTE: This is an Aether internal implementation file, its format can be changed without prior notice.
+#Tue Feb 12 17:29:07 CST 2019
+http\://dev.hd.sohu.com.cn/nexus/content/repositories/3rdparty/.lastUpdated=1549963356524
+@default-Nexus-http\://dev.hd.sohu.com.cn/nexus/content/groups/public/.lastUpdated=1549963338261
+http\://dev.hd.sohu.com.cn/nexus/content/repositories/snapshots/.lastUpdated=1549963356548
+http\://dev.hd.sohu.com.cn/nexus/content/repositories/snapshots/.error=
+http\://dev.hd.sohu.com.cn/nexus/content/groups/public/.error=
+http\://dev.hd.sohu.com.cn/nexus/content/groups/public/.lastUpdated=1549963356453
+http\://dev.hd.sohu.com.cn/nexus/service/local/repositories/central/content/.lastUpdated=1549963356573
+http\://dev.hd.sohu.com.cn/nexus/content/repositories/releases/.error=
+http\://dev.hd.sohu.com.cn/nexus/content/repositories/3rdparty/.error=
+https\://repo.maven.apache.org/maven2/.lastUpdated=1549963358018
+https\://repo.maven.apache.org/maven2/.error=
+http\://dev.hd.sohu.com.cn/nexus/content/repositories/releases/.lastUpdated=1549963356474
+http\://dev.hd.sohu.com.cn/nexus/service/local/repositories/central/content/.error=
+http\://index.tv.sohuno.com/nexus/content/groups/public/.lastUpdated=1549963747088

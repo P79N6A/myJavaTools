@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata modelVersion="1.1.0">
+  <groupId>com.sohu.tv</groupId>
+  <artifactId>cachecloud-parent</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <versioning>
+    <snapshot>
+      <timestamp>20170821.090349</timestamp>
+      <buildNumber>11</buildNumber>
+    </snapshot>
+    <lastUpdated>20170821090349</lastUpdated>
+    <snapshotVersions>
+      <snapshotVersion>
+        <extension>pom</extension>
+        <value>1.0-20170821.090349-11</value>
+        <updated>20170821090349</updated>
+      </snapshotVersion>
+    </snapshotVersions>
+  </versioning>
+</metadata>

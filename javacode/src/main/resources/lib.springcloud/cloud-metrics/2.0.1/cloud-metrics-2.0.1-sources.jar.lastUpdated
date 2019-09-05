@@ -1,0 +1,16 @@
+#NOTE: This is an Aether internal implementation file, its format can be changed without prior notice.
+#Tue May 21 11:45:48 CST 2019
+@default-central-https\://repo.maven.apache.org/maven2/.lastUpdated=1550027639151
+http\://dev.hd.sohu.com.cn/nexus/content/repositories/3rdparty/.lastUpdated=1558410346790
+@default-Nexus-http\://dev.hd.sohu.com.cn/nexus/content/groups/public/.lastUpdated=1550027638880
+http\://dev.hd.sohu.com.cn/nexus/content/repositories/snapshots/.lastUpdated=1558410346805
+http\://dev.hd.sohu.com.cn/nexus/content/repositories/snapshots/.error=
+http\://dev.hd.sohu.com.cn/nexus/content/groups/public/.error=
+http\://dev.hd.sohu.com.cn/nexus/content/groups/public/.lastUpdated=1558410346771
+http\://dev.hd.sohu.com.cn/nexus/service/local/repositories/central/content/.lastUpdated=1558410347112
+http\://dev.hd.sohu.com.cn/nexus/content/repositories/releases/.error=
+http\://dev.hd.sohu.com.cn/nexus/content/repositories/3rdparty/.error=
+https\://repo.maven.apache.org/maven2/.error=Could not transfer artifact com.sohu.tv.index.cloud\:cloud-metrics\:jar\:sources\:2.0.1 from/to central (https\://repo.maven.apache.org/maven2)\: Can't connect to SOCKS proxy\:Connection refused (Connection refused)
+http\://dev.hd.sohu.com.cn/nexus/content/repositories/releases/.lastUpdated=1558410346780
+http\://dev.hd.sohu.com.cn/nexus/service/local/repositories/central/content/.error=
+http\://index.tv.sohuno.com/nexus/content/groups/public/.lastUpdated=1558410348522

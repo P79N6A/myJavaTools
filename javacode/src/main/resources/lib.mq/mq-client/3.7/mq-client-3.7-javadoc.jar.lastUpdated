@@ -1,0 +1,19 @@
+#NOTE: This is an Aether internal implementation file, its format can be changed without prior notice.
+#Thu Sep 05 16:10:39 CST 2019
+http\://dev.hd.sohu.com.cn/nexus/content/repositories/3rdparty/.lastUpdated=1567671039098
+http\://index.tv.sohuno.com/nexus/content/groups/public/.error=
+http\://dev.hd.sohu.com.cn/nexus/content/repositories/snapshots/.lastUpdated=1567671039106
+@default-sohuNexus-http\://dev.hd.sohu.com.cn/nexus/content/groups/public/.lastUpdated=1566803752955
+http\://dev.hd.sohu.com.cn/nexus/content/repositories/snapshots/.error=
+http\://dev.hd.sohu.com.cn/nexus/content/groups/public/.error=
+@default-sohu.nexus-http\://index.tv.sohuno.com/nexus/content/groups/public/.lastUpdated=1567392738223
+http\://dev.hd.sohu.com.cn/nexus/content/groups/public/.lastUpdated=1567671039081
+http\://dev.hd.sohu.com.cn/nexus/content/repositories/releases/.error=
+@default-sohuNexus-snapshot-http\://dev.hd.sohu.com.cn/nexus/content/repositories/snapshots/.lastUpdated=1566803752973
+http\://dev.hd.sohu.com.cn/nexus/content/repositories/3rdparty/.error=
+@default-sohuNexus-releases-http\://dev.hd.sohu.com.cn/nexus/content/repositories/releases/.lastUpdated=1566803752963
+https\://repo.maven.apache.org/maven2/.lastUpdated=1567671039614
+https\://repo.maven.apache.org/maven2/.error=
+http\://dev.hd.sohu.com.cn/nexus/content/repositories/releases/.lastUpdated=1567671039089
+@default-3rd-http\://dev.hd.sohu.com.cn/nexus/content/repositories/3rdparty/.lastUpdated=1567392738217
+http\://index.tv.sohuno.com/nexus/content/groups/public/.lastUpdated=1567671039129

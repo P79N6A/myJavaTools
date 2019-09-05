@@ -1,0 +1,45 @@
+<!doctype html>
+<!--
+
+ Copyright 2018-present Sonatype, Inc.
+
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+ http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+
+-->
+<html lang="en">
+<head>
+  <!-- Google Analytics -->
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-101097570-3', 'auto');
+  </script>
+  <!-- End Google Analytics -->
+  <meta charset="utf-8">
+  <meta name="theme-color" content="#336699"/>
+  <meta name="Description" content="The Search Engine for The Central Repository">
+  <link rel="manifest" href="manifest.json"/>
+  <title>The Central Repository Search Engine</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico?v=3">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link rel="stylesheet" href="styles.f7f5320423dffda3a3da.css"></head>
+<body>
+  <app-root></app-root>
+  <noscript>Sorry, your browser does not support JavaScript!</noscript>
+<script type="text/javascript" src="runtime.8f18a0f9e415d58eb479.js"></script><script type="text/javascript" src="polyfills.41a14a4e45f97a1f685c.js"></script><script type="text/javascript" src="main.d02503b84ed5e16f5ee0.js"></script></body>
+</html>
